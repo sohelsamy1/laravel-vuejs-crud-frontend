@@ -8,7 +8,7 @@
       <div class="col-md-7 col-lg-6 center-screen">
         <div class="card w-90 p-4">
           <div class="card-body">
-            <form >
+            <form>
               <h4>SIGN IN</h4>
               <br />
               <input
@@ -33,7 +33,7 @@
             </form>
             <hr />
             <div class="float-end mt-3">
-             
+              
             </div>
           </div>
         </div>
