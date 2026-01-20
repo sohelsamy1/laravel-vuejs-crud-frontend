@@ -14,13 +14,36 @@ export const useAuthStore = defineStore("auth", () => {
 
   // Action
 
-  //Registration
+ //Registration
   const register = async (credentials) => {
     try {
       await apiClient.post("/register", credentials);
+      cogoToast.success("Registration Successfull", {
+        position: "bottom-center",
+      });
       return true;
     } catch (error) {
-      console.log(error);
+      //   validation error
+      if (error.response?.data?.errors) {
+        const errors = error.response.data.errors;
+        for (const field in errors) {
+          errors[field].forEach((msg) => {
+            cogoToast.error(msg, { position: "bottom-center" });
+          });
+        }
+      }
+      //   Email already Taken
+      else if (error.response?.data?.message) {
+        cogoToast.error(error.response.data.message, {
+          position: "bottom-center",
+        });
+      }
+      // Server or Network
+      else {
+        cogoToast.error("Something went wrong", {
+          position: "bottom-center",
+        });
+      }
       return false;
     }
   };
