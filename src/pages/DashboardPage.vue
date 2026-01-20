@@ -60,10 +60,10 @@ const authStore = useAuthStore();
     <i class="bi bi-speedometer2 side-bar-item-icon"></i>
     <span>Dashboard</span>
   </a>
-  <a href="#" class="side-bar-item mt-2">
-    <i class="bi bi-pencil-square side-bar-item-icon"></i>
-    <span>Create New</span>
-  </a>
+  <RouterLink :to="{ name: 'create' }" class="side-bar-item mt-2">
+      <i class="bi bi-pencil-square side-bar-item-icon"></i>
+      <span>Create New</span>
+  </RouterLink>
   <a href="#" class="side-bar-item mt-2">
     <i class="bi bi-list-ul side-bar-item-icon"></i>
     <span>New Task</span>
@@ -86,10 +86,10 @@ const authStore = useAuthStore();
   </a>
 </div>
 
-<!-- Content -->
-<div class="content">
-  <p>Page content goes here...</p>
-</div>
+  <!-- Content -->
+  <div class="content">
+    <RouterView />
+  </div>
 
 </template>
 
