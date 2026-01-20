@@ -64,10 +64,10 @@ const authStore = useAuthStore();
       <i class="bi bi-pencil-square side-bar-item-icon"></i>
       <span>Create New</span>
   </RouterLink>
-  <a href="#" class="side-bar-item mt-2">
-    <i class="bi bi-list-ul side-bar-item-icon"></i>
-    <span>New Task</span>
-  </a>
+    <RouterLink :to="{ name: 'newtasks' }" class="side-bar-item mt-2">
+      <i class="bi bi-list-ul side-bar-item-icon"></i>
+      <span>New Task</span>
+    </RouterLink>
   <a href="#" class="side-bar-item mt-2">
     <i class="bi bi-hourglass-split side-bar-item-icon"></i>
     <span>In Progress</span>

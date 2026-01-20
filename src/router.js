@@ -3,6 +3,7 @@ import LoginPage from "./pages/LoginPage.vue";
 import RegistrationPage from "./pages/RegistrationPage.vue";
 import DashboardPage from "./pages/DashboardPage.vue";
 import CreateTask from "./components/Task/CreateTask.vue";
+import NewTasks from "./components/Task/NewTasks.vue";
 
 const routes = [
   {
@@ -29,6 +30,11 @@ const routes = [
         path: "create",
         component: CreateTask,
         name: "create",
+      },
+        {
+        path: "newtasks",
+        component: NewTasks,
+        name: "newtasks",
       },
     ],
     },
