@@ -1,5 +1,7 @@
 <script setup>
+import { useAuthStore } from "../stores/authStore";
 
+const authStore = useAuthStore();
 </script>
 
 <template>
@@ -35,10 +37,17 @@
             <i class="bi bi-person side-bar-item-icon"></i>
             <span class="side-bar-item-caption">Profile</span>
           </a>
+
+            <span
+              @click="authStore.logout"
+              class="side-bar-item"
+              style="cursor: pointer"
+            >
           <a href="#" class="side-bar-item mt-2">
             <i class="bi bi-box-arrow-right side-bar-item-icon"></i>
             <span class="side-bar-item-caption">Logout</span>
           </a>
+          </span>
         </div>
       </div>
     </div>
