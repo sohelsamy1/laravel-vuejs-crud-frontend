@@ -84,22 +84,31 @@ export const useAuthStore = defineStore("auth", () => {
     }
   };
 
-  //Logout
-   const logout = async () => {
+ // Logout
+  const logout = async () => {
     try {
-      await apiClient.post("/logout");
-    
-    } catch (error) {
-    }finally {
+      const success = await apiClient.post("/logout");
       token.value = null;
       localStorage.removeItem("token");
+      cogoToast.success("Logout Successfull", { position: "bottom-center" });
 
-      router.push({ name: "login"});
+      if (success) {
+        router.push({ name: "login" });
+      }
+
+      return true;
+    } catch (error) {
+      console.log(error);
+      if (error?.message) {
+        cogoToast.error(error.message, {
+          position: "bottom-center",
+        });
+      }
+      return false;
     }
   };
 
  
-
   //GetUser
   return {
     user,
