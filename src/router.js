@@ -6,6 +6,7 @@ import CreateTask from "./components/Task/CreateTask.vue";
 import NewTasks from "./components/Task/NewTasks.vue";
 import ProgressTasks from "./components/Task/ProgressTasks.vue";
 import CompletedTasks from "./components/Task/CompletedTasks.vue";
+import CanceledTasks from "./components/Task/CanceledTasks.vue";
 
 const routes = [
   {
@@ -47,6 +48,11 @@ const routes = [
         path: "completed",
         component: CompletedTasks,
         name: "completed",
+      },
+         {
+        path: "cancelled",
+        component: CanceledTasks,
+        name: "cancelled",
       },
     ],
     },

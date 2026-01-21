@@ -76,10 +76,10 @@ const authStore = useAuthStore();
       <i class="bi bi-check-circle side-bar-item-icon"></i>
       <span>Completed</span>
     </RouterLink>
-  <a href="#" class="side-bar-item mt-2">
-    <i class="bi bi-x-octagon side-bar-item-icon"></i>
-    <span>Canceled</span>
-  </a>
+    <RouterLink :to="{ name: 'cancelled' }" class="side-bar-item mt-2">
+      <i class="bi bi-x-octagon side-bar-item-icon"></i>
+      <span>Canceled</span>
+    </RouterLink>
   <a href="#" class="side-bar-item mt-2">
     <i class="bi bi-x-octagon side-bar-item-icon"></i>
     <span>Trashed</span>
