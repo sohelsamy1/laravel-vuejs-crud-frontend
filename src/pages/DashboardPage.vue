@@ -80,10 +80,10 @@ const authStore = useAuthStore();
       <i class="bi bi-x-octagon side-bar-item-icon"></i>
       <span>Canceled</span>
     </RouterLink>
-  <a href="#" class="side-bar-item mt-2">
-    <i class="bi bi-x-octagon side-bar-item-icon"></i>
-    <span>Trashed</span>
-  </a>
+    <RouterLink :to="{ name: 'trashed' }" class="side-bar-item mt-2">
+      <i class="bi bi-x-octagon side-bar-item-icon"></i>
+      <span>Trashed</span>
+    </RouterLink>
 </div>
 
   <!-- Content -->
