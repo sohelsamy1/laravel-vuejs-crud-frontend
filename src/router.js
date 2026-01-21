@@ -4,6 +4,7 @@ import RegistrationPage from "./pages/RegistrationPage.vue";
 import DashboardPage from "./pages/DashboardPage.vue";
 import CreateTask from "./components/Task/CreateTask.vue";
 import NewTasks from "./components/Task/NewTasks.vue";
+import ProgressTasks from "./components/Task/ProgressTasks.vue";
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
         path: "newtasks",
         component: NewTasks,
         name: "newtasks",
+      },
+        {
+        path: "inprogress",
+        component: ProgressTasks,
+        name: "inprogress",
       },
     ],
     },
