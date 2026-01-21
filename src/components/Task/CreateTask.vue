@@ -1,5 +1,29 @@
 <script setup>
+import { ref } from "vue";
+import { useTaskStore } from "../../stores/taskStore";
+
+const taskStore = useTaskStore();
+
+const title = ref("");
+const description = ref("");
+
+const createTask = async () => {
+  if (!title.value.trim()) {
+    alert("Please Enter Task Title");
+    return;
+  }
+
+  await taskStore.createTask({
+    title: title.value,
+    description: description.value,
+    status: "completed",
+  });
+
+  title.value = "";
+  description.value = "";
+};
 </script>
+
 
 <template>
   <div class="content-body container-fluid">
@@ -8,21 +32,22 @@
         <div class="card">
           <div class="card-body">
             <h4>Create New</h4>
-            <br />
-            <input
+            <br /><input
               placeholder="Task Name"
               class="form-control animated fadeInUp"
               type="text"
-            />
-            <br />
-            <textarea
+              v-model="title"
+            /><br /><textarea
               rows="5"
               placeholder="Task Description"
               class="form-control animated fadeInUp"
               type="text"
-            ></textarea>
-            <br />
-            <button class="btn float-end btn-primary">
+              v-model="description"
+            ></textarea
+            ><br /><button
+              @click="createTask"
+              class="btn float-end btn-primary"
+            >
               Create
             </button>
           </div>
