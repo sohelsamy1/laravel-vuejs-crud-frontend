@@ -8,6 +8,7 @@ import ProgressTasks from "./components/Task/ProgressTasks.vue";
 import CompletedTasks from "./components/Task/CompletedTasks.vue";
 import CanceledTasks from "./components/Task/CanceledTasks.vue";
 import TrashedTasks from "./components/Task/TrashedTasks.vue";
+import ProfilePage from "./components/ProfilePage.vue";
 
 const routes = [
   {
@@ -59,6 +60,11 @@ const routes = [
         path: "tasks/trashed",
         component: TrashedTasks,
         name: "trashed",
+      },
+        {
+        path: "profile",
+        component: ProfilePage,
+        name: "profile",
       },
     ],
     },
