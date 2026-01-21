@@ -1,48 +1,76 @@
 <script setup>
+import { onBeforeMount } from "vue";
+import { useRouter } from "vue-router";
+import { useTaskStore } from "../../stores/taskStore";
+import ShimmerLoader from "../ShimmerLoader.vue";
+
+const taskStore = useTaskStore();
+const router = useRouter();
+
+onBeforeMount(async () => {
+  await taskStore.fetchTasksByStatus("completed");
+});
+
+const goToEdit = (id) => {
+  router.push({ name: "edittask", params: { id } });
+};
+
+const deleteTask = async (id) => {
+  await taskStore.deleteTask(id);
+};
 </script>
 
 <template>
   <div class="content-body container-fluid">
-    <!-- Header and Search Bar -->
+    <!-- Header -->
     <div class="row p-0 m-0">
       <div class="col-12 col-md-6 col-lg-8 px-3">
         <h5>Task New</h5>
       </div>
-      <div class="col-12 col-md-6 col-lg-4 px-2">
-        <div class="row">
-          <div class="col-8">
-            <input class="form-control w-100" placeholder="Search task" />
-          </div>
-          <div class="col-4">
-            <button class="btn btn-primary w-100">Search</button>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <!-- Static Task Cards -->
-    <div class="row p-0 m-0 mt-3">
-      <div class="col-12 col-lg-3 col-sm-6 col-md-4 p-2">
-        <div class="card h-100">
-          <div class="card-body">
-            <h6>Sample Task Title</h6>
-            <p>Sample task description goes here.</p>
+    <!-- Task List -->
+    <ShimmerLoader :loading="taskStore.loading" :count="12" :lines="1">
+      <div class="row p-0 m-0">
+        <div
+          v-for="task in taskStore.tasks"
+          :key="task.id"
+          class="col-12 col-lg-3 col-sm-6 col-md-4 p-2"
+        >
+          <div class="card h-100">
+            <div class="card-body">
+              <h6>{{ task.title }}</h6>
+              <p>{{ task.description }}</p>
 
-            <p class="m-0 p-0">
-              <span>📅 01/01/2026</span>
+              <div class="d-flex justify-content-between align-items-center">
+                <small>
+                  {{ new Date(task.created_at).toLocaleDateString() }}
+                </small>
 
-              <!-- Icons (static) -->
-              <a class="icon-nav text-primary mx-1">✏️</a>
-              <a class="icon-nav text-danger mx-1">🗑️</a>
+                <div>
+                  <!-- Edit -->
+                  <span
+                    class="text-primary mx-2 cursor-pointer"
+                    @click="goToEdit(task.id)"
+                  >
+                    ✏️
+                  </span>
 
-              <span class="badge float-end bg-info text-white">
-                New
-              </span>
-            </p>
+                  <!-- Delete -->
+                  <span
+                    class="text-danger cursor-pointer"
+                    @click="deleteTask(task.id)"
+                  >
+                    🗑️
+                  </span>
+                </div>
+              </div>
+
+              <span class="badge bg-info mt-2">{{ task.status }}</span>
+            </div>
           </div>
         </div>
       </div>
-
-         </div>
+    </ShimmerLoader>
   </div>
 </template>
