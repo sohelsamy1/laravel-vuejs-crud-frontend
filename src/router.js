@@ -5,6 +5,7 @@ import DashboardPage from "./pages/DashboardPage.vue";
 import CreateTask from "./components/Task/CreateTask.vue";
 import NewTasks from "./components/Task/NewTasks.vue";
 import ProgressTasks from "./components/Task/ProgressTasks.vue";
+import CompletedTasks from "./components/Task/CompletedTasks.vue";
 
 const routes = [
   {
@@ -41,6 +42,11 @@ const routes = [
         path: "inprogress",
         component: ProgressTasks,
         name: "inprogress",
+      },
+        {
+        path: "completed",
+        component: CompletedTasks,
+        name: "completed",
       },
     ],
     },
