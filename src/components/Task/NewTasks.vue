@@ -3,6 +3,8 @@ import { onBeforeMount } from "vue";
 import { useRouter } from "vue-router";
 import { useTaskStore } from "../../stores/taskStore";
 import ShimmerLoader from "../ShimmerLoader.vue";
+import cogoToast from "cogo-toast";
+
 
 const taskStore = useTaskStore();
 const router = useRouter();
@@ -15,7 +17,23 @@ const goToEdit = (id) => {
   router.push({ name: "edittask", params: { id: id } });
 };
 
+const deleteTask = async (id) => {
+  if (!confirm("Are you sure you want to delete this task?")) return;
 
+  try {
+    await taskStore.deleteTask(id);
+    // alert("Task deleted successfully!");
+    cogoToast.success("Task deleted successfully!", {
+      position: "bottom-center",
+    });
+  } catch (error) {
+    console.error("Error deleting task:", error);
+    // alert("Failed to delete task. Please try again.");
+    cogoToast.error("Failed to delete task. Please try again.", {
+      position: "bottom-center",
+    });
+  }
+};
 </script>
 
 <template>

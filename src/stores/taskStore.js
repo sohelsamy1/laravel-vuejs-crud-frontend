@@ -53,6 +53,13 @@ export const useTaskStore = defineStore("task", () => {
     if (index !== -1) tasks.value[index] = res.data;
   };
 
+    // Normal Delete Task
+  const deleteTask = async (id) => {
+    await apiClient.delete(`/tasks/${id}`);
+    tasks.value = tasks.value.filter((t) => t.id !== id);
+  };
+
+
   return {
     tasks,
     loading,
@@ -60,5 +67,6 @@ export const useTaskStore = defineStore("task", () => {
     fetchTasksByStatus,
     getTaskById,
     updateTask, 
+    deleteTask,
   };
 });
