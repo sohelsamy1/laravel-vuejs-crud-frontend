@@ -12,6 +12,10 @@ onBeforeMount(() => {
 const forceDeleteTask = async (id) => {
   await taskStore.forceDeleteTask(id);
 };
+
+const restoreTask = async (id) => {
+  await taskStore.restoreTask(id);
+};
 </script>
 
 <template>
@@ -30,26 +34,23 @@ const forceDeleteTask = async (id) => {
               <h6>{{ task.title }}</h6>
               <p>{{ task.description }}</p>
               <p class="mb-0">
+                <!-- Deleted at: {{ new Date(task.deleted_at).toLocaleString() }} -->
                 Deleted at: {{ task.deleted_at }}
               </p>
-
               <button
                 @click="forceDeleteTask(task.id)"
                 class="btn btn-danger btn-sm mt-2"
               >
                 Permanently Delete
               </button>
-            </div>
-          </div>
-        </div>
 
-        <!-- Empty trash message -->
-        <div
-          v-if="!taskStore.loading && taskStore.tasks.length === 0"
-          class="col-12"
-        >
-          <div class="alert alert-info text-center">
-            Trash is empty.
+              <button
+                @click="restoreTask(task.id)"
+                class="btn btn-success btn-sm mt-2 ms-2"
+              >
+                Restore
+              </button>
+            </div>
           </div>
         </div>
       </div>

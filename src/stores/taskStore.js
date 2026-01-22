@@ -26,7 +26,7 @@ export const useTaskStore = defineStore("task", () => {
   // ======================
   // Get Tasks by Status
   // ======================
-  const fetchTasksByStatus = async (status = "pending") => {
+  const fetchTasksByStatus = async (status = "new") => {
     loading.value = true;
     tasks.value = [];
     try {
@@ -129,7 +129,36 @@ export const useTaskStore = defineStore("task", () => {
     }
   };
 
+  //   Restore Task
+  const restoreTask = async (id) => {
+    const confirm = await Swal.fire({
+      title: "Restore Task?",
+      text: "Do you want to restore this task?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonColor: "#38c172",
+      cancelButtonColor: "#6c757d",
+      confirmButtonText: "Yes, restore it!",
+    });
 
+    if (confirm.isConfirmed) {
+      try {
+        await apiClient.post(`/tasks/${id}/restore`);
+        tasks.value = tasks.value.filter((t) => t.id !== id);
+        Swal.fire({
+          toast: true,
+          position: "top-end",
+          icon: "success",
+          title: "Task restored successfully",
+          showConfirmButton: false,
+          timer: 3000,
+        });
+      } catch (error) {
+        console.error("Failed to restore task", error);
+        Swal.fire("Failed", "Could not restore the task.", "error");
+      }
+    }
+  };
 
   return {
     tasks,
@@ -141,6 +170,6 @@ export const useTaskStore = defineStore("task", () => {
     deleteTask,
     fetchTrashedTasks,
     forceDeleteTask,
-    
+    restoreTask,
   };
 });
