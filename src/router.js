@@ -9,6 +9,7 @@ import CompletedTasks from "./components/Task/CompletedTasks.vue";
 import CanceledTasks from "./components/Task/CanceledTasks.vue";
 import TrashedTasks from "./components/Task/TrashedTasks.vue";
 import ProfilePage from "./components/ProfilePage.vue";
+import EditTask from "./components/Task/EditTask.vue";
 
 const routes = [
   {
@@ -65,6 +66,11 @@ const routes = [
         path: "profile",
         component: ProfilePage,
         name: "profile",
+      },
+       {
+        path: "tasks/:id/edit",
+        name: "edittask",
+        component: EditTask,
       },
     ],
     },

@@ -12,12 +12,10 @@ onBeforeMount(async () => {
 });
 
 const goToEdit = (id) => {
-  router.push({ name: "edittask", params: { id } });
+  router.push({ name: "edittask", params: { id: id } });
 };
 
-const deleteTask = async (id) => {
-  await taskStore.deleteTask(id);
-};
+
 </script>
 
 <template>

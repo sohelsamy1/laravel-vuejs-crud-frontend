@@ -40,10 +40,25 @@ export const useTaskStore = defineStore("task", () => {
     }
   };
 
+  // Get Single Task
+  const getTaskById = async (id) => {
+    const res = await apiClient.get(`/tasks/${id}`);
+    return res.data.data;
+  };
+
+  // Update Task
+  const updateTask = async (id, payload) => {
+    const res = await apiClient.put(`/tasks/${id}`, payload);
+    const index = tasks.value.findIndex((t) => t.id === id);
+    if (index !== -1) tasks.value[index] = res.data;
+  };
+
   return {
     tasks,
     loading,
     createTask,
     fetchTasksByStatus,
+    getTaskById,
+    updateTask, 
   };
 });
