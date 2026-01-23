@@ -7,8 +7,8 @@ Frontend for a Task Management CRUD app using **Vue 3**, **Pinia**, and **Axios*
 ## Author  
 
 **Sohel Samy**  
-- Email: sohelsamy18@gmail.com  
-- LinkedIn: https://linkedin.com/in/sohelsamy  
+Email: sohelsamy18@gmail.com  
+LinkedIn: https://linkedin.com/in/sohelsamy  
 
 ---  
 
@@ -31,19 +31,19 @@ Task Management
 Create, read, update, soft delete, restore, and permanently delete tasks  
 Update task status (new, in_progress, completed, canceled)  
 
-Pages  
+Pages:   
 
 Dashboard: View tasks by status  
 Progress Tasks: Tasks with in_progress status  
 Trashed Tasks: Soft-deleted tasks (restore & permanent delete)  
 Edit Task: Update task details  
 
-Notifications  
+Notifications:   
 
 Toasts via CogoToast  
 Confirmation dialogs via SweetAlert2  
 
-Loading State  
+Loading State:    
 
 Shimmer loader for async fetches  
 
