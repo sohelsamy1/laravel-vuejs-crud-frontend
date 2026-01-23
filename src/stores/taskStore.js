@@ -8,6 +8,27 @@ export const useTaskStore = defineStore("task", () => {
   const tasks = ref([]);
   const loading = ref(false);
 
+const summary = ref({
+    new: 0,
+    in_progress: 0,
+    completed: 0,
+    cancelled: 0,
+});
+
+//fetch summary
+const fetchSummary =  async () => {
+  loading.value = true;
+  try{
+    const res = await apiClient.get ("tasks/summary");
+    loading.value = false;
+    console.log(res);
+    summary.value = res.data.data;
+    } catch (error) {
+      console.log("Failed to fetch summary", error);
+    }
+  };
+
+
   // ======================
   // Create Task
   // ======================
@@ -163,6 +184,7 @@ export const useTaskStore = defineStore("task", () => {
   return {
     tasks,
     loading,
+    summary,
     createTask,
     fetchTasksByStatus,
     getTaskById,
@@ -171,5 +193,6 @@ export const useTaskStore = defineStore("task", () => {
     fetchTrashedTasks,
     forceDeleteTask,
     restoreTask,
+    fetchSummary,
   };
 });
