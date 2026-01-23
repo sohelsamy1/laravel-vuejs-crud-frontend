@@ -10,6 +10,7 @@ import CanceledTasks from "./components/Task/CanceledTasks.vue";
 import TrashedTasks from "./components/Task/TrashedTasks.vue";
 import ProfilePage from "./components/ProfilePage.vue";
 import EditTask from "./components/Task/EditTask.vue";
+import SummaryPage from "./components/SummaryPage.vue";
 
 const routes = [
   {
@@ -32,6 +33,11 @@ const routes = [
     name: "dashboard",
     meta: { requiresAuth: true },
     children: [
+        {
+        path: "summary",
+        component: SummaryPage,
+        name: "summary",
+      },
        {
         path: "create",
         component: CreateTask,
@@ -52,7 +58,7 @@ const routes = [
         component: CompletedTasks,
         name: "completed",
       },
-         {
+        {
         path: "cancelled",
         component: CanceledTasks,
         name: "cancelled",

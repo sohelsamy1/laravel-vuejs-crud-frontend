@@ -7,15 +7,15 @@ Frontend for a Task Management CRUD app using **Vue 3**, **Pinia**, and **Axios*
 ## Author  
 
 **Sohel Samy**  
-Email: sohel@example.com (optional)  
-GitHub: [https://github.com/sohelsamy](https://github.com/sohelsamy)  
+- Email: sohelsamy18@gmail.com  
+- LinkedIn: https://linkedin.com/in/sohelsamy  
 
----
+---  
 
 ## Backend  
 
 Make sure you have the Laravel backend running:  
-[Laravel-VueJS-CRUD Backend](https://github.com/sohelsamy/laravel-vuejs-crud-backend)  
+🔗 Backend Repository: https://github.com/sohelsamy1/laravel-vuejs-crud-backend  
 
 API base URL in `axiosClient.js` should match your backend, e.g.:  
 

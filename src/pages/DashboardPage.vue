@@ -56,10 +56,10 @@ const authStore = useAuthStore();
 
 <!-- Sidebar -->
 <div class="side-nav-open">
-  <a href="#" class="side-bar-item mt-2">
-    <i class="bi bi-speedometer2 side-bar-item-icon"></i>
-    <span>Dashboard</span>
-  </a>
+  <RouterLink :to="{ name: 'summary' }" class="side-bar-item mt-2">
+      <i class="bi bi-speedometer2 side-bar-item-icon"></i>
+      <span>Dashboard</span>
+    </RouterLink>
   <RouterLink :to="{ name: 'create' }" class="side-bar-item mt-2">
       <i class="bi bi-pencil-square side-bar-item-icon"></i>
       <span>Create New</span>
