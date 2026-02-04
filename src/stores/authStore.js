@@ -8,10 +8,11 @@ export const useAuthStore = defineStore("auth", () => {
   const router = useRouter();
 
 
-  // State
+ // State
   const user = ref(null);
   const token = ref(localStorage.getItem("token") || null);
-
+  const isAuthenticated = computed(() => token.value !== null);
+  
   // Action
 
  //Registration
@@ -121,6 +122,7 @@ export const useAuthStore = defineStore("auth", () => {
   return {
     user,
     token,
+    isAuthenticated,
     register,
     login,
     logout,
