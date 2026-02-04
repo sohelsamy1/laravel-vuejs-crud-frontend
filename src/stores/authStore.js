@@ -108,6 +108,14 @@ export const useAuthStore = defineStore("auth", () => {
     }
   };
 
+ const getUser = async ()=> {
+    try{
+      const res = await apiClient.get("/me");
+      user.value = res.data.data;
+      } catch (error) {
+        console.log("Failed to fetch user", error);
+      }
+  };
  
   //GetUser
   return {
@@ -116,5 +124,6 @@ export const useAuthStore = defineStore("auth", () => {
     register,
     login,
     logout,
+    getUser,
   };
 });

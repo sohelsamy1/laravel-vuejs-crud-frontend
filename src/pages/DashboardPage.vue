@@ -5,65 +5,64 @@ const authStore = useAuthStore();
 </script>
 
 <template>
- <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top px-3 shadow-sm">
-  <div class="container-fluid">
-    <a href="#" class="navbar-brand d-flex align-items-center">
-      <i class="bi bi-list h4 m-0"></i>
-      <img
-        src="https://cdn-icons-png.flaticon.com/256/906/906334.png"
-        class="nav-logo mx-2"
-        alt="logo"
-      />
-    </a>
-    <div class="d-flex align-items-center">
-      <div class="user-dropdown">
+  <!-- Navbar -->
+  <nav
+    class="navbar navbar-expand-lg navbar-light bg-light fixed-top px-3 shadow-sm"
+  >
+    <div class="container-fluid">
+      <a href="#" class="navbar-brand d-flex align-items-center">
+        <i class="bi bi-list h4 m-0"></i>
         <img
-          src="https://t3.ftcdn.net/jpg/02/00/90/24/360_F_200902415_G4eZ9Ok3Ypd4SZZKjc8nqJyFVp1eOD6V.jpg"
-          alt="User"
-          class="icon-nav-img"
+          src="https://cdn-icons-png.flaticon.com/256/906/906334.png"
+          class="nav-logo mx-2"
+          alt="logo"
         />
-        <div class="user-dropdown-content p-3">
-          <div class="text-center">
-            <img
-              src="https://t3.ftcdn.net/jpg/02/00/90/24/360_F_200902415_G4eZ9Ok3Ypd4SZZKjc8nqJyFVp1eOD6V.jpg"
-              class="icon-nav-img mb-2"
-              alt=""
-            />
-            <h6>User Name</h6>
-            <hr class="p-0" />
-          </div>
-          <a href="#" class="side-bar-item mt-2">
-            <i class="bi bi-person side-bar-item-icon"></i>
-            <span class="side-bar-item-caption">Profile</span>
-          </a>
-
+      </a>
+      <div class="d-flex align-items-center">
+        <div class="user-dropdown">
+          <img
+            src="https://t3.ftcdn.net/jpg/02/00/90/24/360_F_200902415_G4eZ9Ok3Ypd4SZZKjc8nqJyFVp1eOD6V.jpg"
+            alt="User"
+            class="icon-nav-img"
+          />
+          <div class="user-dropdown-content p-3">
+            <div class="text-center">
+              <img
+                src="https://t3.ftcdn.net/jpg/02/00/90/24/360_F_200902415_G4eZ9Ok3Ypd4SZZKjc8nqJyFVp1eOD6V.jpg"
+                class="icon-nav-img mb-2"
+                alt=""
+              />
+              <h6>{{  authStore.user?.name }}</h6>
+              <hr class="p-0" />
+            </div>
+            <RouterLink :to="{ name: 'profile' }" class="side-bar-item mt-2">
+              <i class="bi bi-person side-bar-item-icon"></i>
+              <span class="side-bar-item-caption">Profile</span>
+            </RouterLink>
             <span
               @click="authStore.logout"
               class="side-bar-item"
               style="cursor: pointer"
             >
-          <a href="#" class="side-bar-item mt-2">
-            <i class="bi bi-box-arrow-right side-bar-item-icon"></i>
-            <span class="side-bar-item-caption">Logout</span>
-          </a>
-          </span>
+              <i class="bi bi-box-arrow-right side-bar-item-icon"></i>
+              <span class="side-bar-item-caption">Logout</span>
+            </span>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<!-- Sidebar -->
-<div class="side-nav-open">
-  <RouterLink :to="{ name: 'summary' }" class="side-bar-item mt-2">
+  <!-- Sidebar -->
+  <div class="side-nav-open">
+    <RouterLink :to="{ name: 'summary' }" class="side-bar-item mt-2">
       <i class="bi bi-speedometer2 side-bar-item-icon"></i>
       <span>Dashboard</span>
     </RouterLink>
-  <RouterLink :to="{ name: 'create' }" class="side-bar-item mt-2">
+    <RouterLink :to="{ name: 'create' }" class="side-bar-item mt-2">
       <i class="bi bi-pencil-square side-bar-item-icon"></i>
       <span>Create New</span>
-  </RouterLink>
+    </RouterLink>
     <RouterLink :to="{ name: 'newtasks' }" class="side-bar-item mt-2">
       <i class="bi bi-list-ul side-bar-item-icon"></i>
       <span>New Task</span>
@@ -84,13 +83,12 @@ const authStore = useAuthStore();
       <i class="bi bi-x-octagon side-bar-item-icon"></i>
       <span>Trashed</span>
     </RouterLink>
-</div>
+  </div>
 
   <!-- Content -->
   <div class="content">
     <RouterView />
   </div>
-
 </template>
 
 <style scoped>
