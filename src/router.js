@@ -12,6 +12,7 @@ import ProfilePage from "./components/ProfilePage.vue";
 import EditTask from "./components/Task/EditTask.vue";
 import SummaryPage from "./components/SummaryPage.vue";
 import { useAuthStore } from "./stores/authStore";
+import nProgress from "nprogress";
 
 const routes = [
   {
@@ -105,5 +106,19 @@ router.beforeEach((to, from, next)=> {
     next();
 });
 
+//Routing Progress
+router.beforeResolve((to, from, next) => {
+  if (to.name) {
+    nProgress.start();
+  }
+   next();
+});
+
+router.afterEach(() => {
+  nProgress.done();
+});
+nProgress.configure({ showSpinner: false,
+   template: '<div class="bar" role="bar" style="background-color: red"><div class="peg"></div></div>'
+});
 
 export default router;
