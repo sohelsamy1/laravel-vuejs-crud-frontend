@@ -11,6 +11,7 @@ import TrashedTasks from "./components/Task/TrashedTasks.vue";
 import ProfilePage from "./components/ProfilePage.vue";
 import EditTask from "./components/Task/EditTask.vue";
 import SummaryPage from "./components/SummaryPage.vue";
+import { useAuthStore } from "./stores/authStore";
 
 const routes = [
   {
@@ -85,6 +86,23 @@ const routes = [
 const router = createRouter({
   history: createWebHistory(),
   routes,
+});
+
+router.beforeEach((to, from, next)=> {
+    const auth = useAuthStore();
+    const isAuthenticated = auth.isAuthenticated;
+
+    //if user is not logged in but trying to access dasjboard or other....... 
+    if(to.meta.requiresAuth && !isAuthenticated) {
+      return next({ name: "login" });
+    }
+    
+    //if user is already logged in but trying to access login/ registration page......
+    if((to.name === 'login' || to.name === 'register') && isAuthenticated){
+      return next ({ name: "summary"});
+    }
+      
+    next();
 });
 
 

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { ref } from "vue";
+import { computed, ref } from "vue";
 import apiClient from "../services/axiosClient";
 import { useRouter } from "vue-router";
 import cogoToast from "cogo-toast";
